@@ -29,6 +29,48 @@ func ValidatePhoneEncrypt(portalId string, objectType string, objectId string, p
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
+func ValidateEmailEncrypt(portalId string, objectType string, objectId string, email string, cipherKey string) (string, *errortools.Error) {
+	var values = make(map[string]string)
+	values["portal_id"] = portalId
+	values["object_type"] = objectType
+	values["object_id"] = objectId
+	values["email"] = email
+
+	b, err := json.Marshal(values)
+	if err != nil {
+		return "", errortools.ErrorMessage(err)
+	}
+
+	encrypted, err := utils.Encrypt(b, cipherKey)
+	if err != nil {
+		return "", errortools.ErrorMessage(err)
+	}
+
+	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
+}
+
+func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, objectId string, firstName string, lastName string, companyName string, cipherKey string) (string, *errortools.Error) {
+	var values = make(map[string]string)
+	values["portal_id"] = portalId
+	values["object_type"] = objectType
+	values["object_id"] = objectId
+	values["first_name"] = firstName
+	values["last_name"] = lastName
+	values["company_name"] = companyName
+
+	b, err := json.Marshal(values)
+	if err != nil {
+		return "", errortools.ErrorMessage(err)
+	}
+
+	encrypted, err := utils.Encrypt(b, cipherKey)
+	if err != nil {
+		return "", errortools.ErrorMessage(err)
+	}
+
+	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
+}
+
 func GetKvkInfoEncrypt(portalId string, objectType string, objectId string, name *string, zip *string, address *string, country *string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
 	values["portal_id"] = portalId
