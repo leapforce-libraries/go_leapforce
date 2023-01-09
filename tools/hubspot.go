@@ -71,11 +71,14 @@ func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, object
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
-func GetKvkInfoEncrypt(portalId string, objectType string, objectId string, name *string, zip *string, address *string, country *string, cipherKey string) (string, *errortools.Error) {
+func GetKvkInfoEncrypt(portalId string, objectType string, objectId string, kvkNumber *string, name *string, zip *string, address *string, country *string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
 	values["object_id"] = objectId
+	if kvkNumber != nil {
+		values["kvk-number"] = *kvkNumber
+	}
 	if name != nil {
 		values["company-name"] = *name
 	}
