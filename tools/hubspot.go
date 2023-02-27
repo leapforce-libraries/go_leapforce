@@ -3,8 +3,10 @@ package tools
 import (
 	"encoding/base64"
 	"encoding/json"
+	"fmt"
 	errortools "github.com/leapforce-libraries/go_errortools"
 	utilities "github.com/leapforce-libraries/go_utilities"
+	"time"
 )
 
 func ValidatePhoneEncrypt(portalId string, objectType string, objectId string, phoneNumber string, region string, field string, targetField string, cipherKey string) (string, *errortools.Error) {
@@ -16,6 +18,7 @@ func ValidatePhoneEncrypt(portalId string, objectType string, objectId string, p
 	values["region"] = region
 	values["field"] = field
 	values["target_field"] = targetField
+	values["ts"] = fmt.Sprintf("%v", time.Now().UnixMilli())
 
 	b, err := json.Marshal(values)
 	if err != nil {
@@ -37,6 +40,7 @@ func ValidateEmailEncrypt(portalId string, objectType string, objectId string, e
 	values["object_id"] = objectId
 	values["email"] = email
 	values["target_field"] = targetField
+	values["ts"] = fmt.Sprintf("%v", time.Now().UnixMilli())
 
 	b, err := json.Marshal(values)
 	if err != nil {
@@ -60,6 +64,7 @@ func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, object
 	values["last_name"] = lastName
 	values["company_name"] = companyName
 	values["target_field"] = targetField
+	values["ts"] = fmt.Sprintf("%v", time.Now().UnixMilli())
 
 	b, err := json.Marshal(values)
 	if err != nil {
@@ -94,6 +99,7 @@ func GetKvkInfoEncrypt(portalId string, objectType string, objectId string, kvkN
 	if country != nil {
 		values["country"] = *country
 	}
+	values["ts"] = fmt.Sprintf("%v", time.Now().UnixMilli())
 
 	b, err := json.Marshal(values)
 	if err != nil {
