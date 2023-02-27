@@ -1,6 +1,6 @@
 module github.com/leapforce-libraries/go_leapforce
 
-go 1.18
+go 1.20
 
 require (
 	github.com/leapforce-libraries/go_errortools v0.0.0-20230111113652-2e37de91e990

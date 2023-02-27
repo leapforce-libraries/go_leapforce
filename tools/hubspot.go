@@ -7,7 +7,7 @@ import (
 	utilities "github.com/leapforce-libraries/go_utilities"
 )
 
-func ValidatePhoneEncrypt(portalId string, objectType string, objectId string, phoneNumber string, region string, field string, cipherKey string) (string, *errortools.Error) {
+func ValidatePhoneEncrypt(portalId string, objectType string, objectId string, phoneNumber string, region string, field string, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
@@ -15,6 +15,7 @@ func ValidatePhoneEncrypt(portalId string, objectType string, objectId string, p
 	values["phone"] = phoneNumber
 	values["region"] = region
 	values["field"] = field
+	values["target_field"] = targetField
 
 	b, err := json.Marshal(values)
 	if err != nil {
@@ -29,12 +30,13 @@ func ValidatePhoneEncrypt(portalId string, objectType string, objectId string, p
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
-func ValidateEmailEncrypt(portalId string, objectType string, objectId string, email string, cipherKey string) (string, *errortools.Error) {
+func ValidateEmailEncrypt(portalId string, objectType string, objectId string, email string, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
 	values["object_id"] = objectId
 	values["email"] = email
+	values["target_field"] = targetField
 
 	b, err := json.Marshal(values)
 	if err != nil {
@@ -49,7 +51,7 @@ func ValidateEmailEncrypt(portalId string, objectType string, objectId string, e
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
-func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, objectId string, firstName string, lastName string, companyName string, cipherKey string) (string, *errortools.Error) {
+func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, objectId string, firstName string, lastName string, companyName string, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
@@ -57,6 +59,7 @@ func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, object
 	values["first_name"] = firstName
 	values["last_name"] = lastName
 	values["company_name"] = companyName
+	values["target_field"] = targetField
 
 	b, err := json.Marshal(values)
 	if err != nil {
