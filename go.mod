@@ -3,7 +3,7 @@ module github.com/leapforce-libraries/go_leapforce
 go 1.20
 
 require (
-	github.com/leapforce-libraries/go_errortools v0.0.0-20230111113652-2e37de91e990
+	github.com/leapforce-libraries/go_errortools v0.0.0-20230306211452-9ccee0cdafe8
 	github.com/leapforce-libraries/go_utilities v0.0.0-20230124210046-7e78c8f41563
 )
 
@@ -13,7 +13,7 @@ require (
 	cloud.google.com/go/compute v1.13.0 // indirect
 	cloud.google.com/go/compute/metadata v0.2.1 // indirect
 	cloud.google.com/go/iam v0.8.0 // indirect
-	github.com/getsentry/sentry-go v0.16.0 // indirect
+	github.com/getsentry/sentry-go v0.19.0 // indirect
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect

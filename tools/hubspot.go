@@ -55,6 +55,31 @@ func ValidateEmailEncrypt(portalId string, objectType string, objectId string, e
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
+func ValidatePostcodeEncrypt(portalId string, objectType string, objectId string, street string, postcode string, city string, country string, targetField string, cipherKey string) (string, *errortools.Error) {
+	var values = make(map[string]string)
+	values["portal_id"] = portalId
+	values["object_type"] = objectType
+	values["object_id"] = objectId
+	values["street"] = street
+	values["postcode"] = postcode
+	values["city"] = city
+	values["country"] = country
+	values["target_field"] = targetField
+	values["ts"] = fmt.Sprintf("%v", time.Now().UnixMilli())
+
+	b, err := json.Marshal(values)
+	if err != nil {
+		return "", errortools.ErrorMessage(err)
+	}
+
+	encrypted, err := utilities.Encrypt(b, cipherKey)
+	if err != nil {
+		return "", errortools.ErrorMessage(err)
+	}
+
+	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
+}
+
 func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, objectId string, firstName string, lastName string, companyName string, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
 	values["portal_id"] = portalId
