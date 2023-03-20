@@ -80,7 +80,7 @@ func ValidatePostcodeEncrypt(portalId string, objectType string, objectId string
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
-func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, objectId string, firstName string, lastName string, companyName string, targetField string, cipherKey string) (string, *errortools.Error) {
+func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, objectId string, firstName string, lastName string, companyName string, profileUrl string, profileTitle string, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
@@ -88,6 +88,8 @@ func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, object
 	values["first_name"] = firstName
 	values["last_name"] = lastName
 	values["company_name"] = companyName
+	values["profile_url"] = profileUrl
+	values["profile_title"] = profileTitle
 	values["target_field"] = targetField
 	values["ts"] = fmt.Sprintf("%v", time.Now().UnixMilli())
 
