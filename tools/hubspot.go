@@ -55,7 +55,7 @@ func ValidateEmailEncrypt(portalId string, objectType string, objectId string, e
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
-func ValidatePostcodeEncrypt(portalId string, objectType string, objectId string, street string, postcode string, city string, country string, targetField string, cipherKey string) (string, *errortools.Error) {
+func ValidatePostcodeEncrypt(portalId string, objectType string, objectId string, street string, postcode string, city string, country string, cbsInfo bool, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
@@ -64,6 +64,7 @@ func ValidatePostcodeEncrypt(portalId string, objectType string, objectId string
 	values["postcode"] = postcode
 	values["city"] = city
 	values["country"] = country
+	values["cbs_info"] = fmt.Sprintf("%v", cbsInfo)
 	values["target_field"] = targetField
 	values["ts"] = fmt.Sprintf("%v", time.Now().UnixMilli())
 
