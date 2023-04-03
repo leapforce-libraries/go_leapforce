@@ -9,6 +9,57 @@ import (
 	"time"
 )
 
+const (
+	PropNoBulk       string = "lf_no_bulk"
+	PropNoBulkLegacy string = "no_bulk"
+
+	PropValidatePhoneNumbers       string = "lf_validate_phone_numbers"
+	PropValidatePhoneNumbersLegacy string = "validate_phone_number_s_"
+	PropMobilePhoneValidity        string = "lf_mobile_phone_validity"
+	PropMobilePhoneValidityLegacy  string = "mobile_phone_validity"
+	PropPhoneValidity              string = "lf_phone_validity"
+	PropPhoneValidityLegacy        string = "phone_validity"
+
+	PropValidateEmail       string = "lf_validate_email"
+	PropValidateEmailLegacy string = "validate_email"
+	PropEmailValidity       string = "lf_email_validity"
+	PropEmailValidityLegacy string = "email_validity"
+
+	PropSearchLinkedInProfilePage       string = "lf_search_linkedin_profile_page"
+	PropSearchLinkedInProfilePageLegacy string = "search_linkedin_profile_page"
+	PropLinkedIn                        string = "lf_linkedin_profile_page"
+	PropLinkedInLegacy                  string = "linkedin_org"
+
+	PropValidatePostcode string = "lf_validate_postcode"
+	PropPostcodeValidity string = "lf_postcode_validity"
+	PropSurfaceArea      string = "lf_surface_area"
+
+	PropGetKvkInfo              string = "lf_get_kvk_info"
+	PropGetKvkInfoLegacy        string = "get_kvk_info"
+	PropKvkNummer               string = "kvk_nummer"
+	PropKvkPotentieleKvkNummers string = "kvk_potentiele_kvk_nummers"
+	PropKvkVestigingsnummer     string = "kvk_vestigingsnummer"
+	PropKvkRsin                 string = "kvk_rsin"
+	PropKvkTypeRechtspersoon    string = "kvk_type_rechtspersoon"
+	PropKvkAantalMedewerkers    string = "kvk_aantal_medewerkers"
+	PropKvkSbiActiviteiten      string = "kvk_sbi_activiteiten"
+	PropKvkRechtsvorm           string = "kvk_rechtsvorm"
+	PropKvkHandelsnaam          string = "kvk_handelsnaam"
+	PropKvkWebsites             string = "kvk_websites"
+
+	PropPercEenpersoonsHuishoudens string = "cbs_perc_eenpersoons_huishoudens"
+	PropCbsGemiddeldeWoningwaarde  string = "cbs_gem_woz_waarde"
+	PropPercKoopwoningen           string = "cbs_perc_koopwoningen"
+	PropGemInkomenPerInwoner       string = "cbs_gem_inkomen_per_inwoner"
+	PropMediaanVermogen            string = "cbs_mediaan_vermogen"
+	PropPercKinderen               string = "cbs_perc_kinderen"
+	PropPercAdolescenten           string = "cbs_perc_adolescenten"
+	PropPercJongvolwassenen        string = "cbs_perc_jongvolwassenen"
+	PropPercSenioren               string = "cbs_perc_senioren"
+	PropMateVanStedelijkheid       string = "cbs_mate_van_stedelijkheid"
+	PropBedrijfsvestiginger        string = "cbs_bedrijfsvestigingen"
+)
+
 func ValidatePhoneEncrypt(portalId string, objectType string, objectId string, phoneNumber string, region string, field string, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
 	values["portal_id"] = portalId
