@@ -27,8 +27,11 @@ const (
 
 	PropSearchLinkedInProfilePage       string = "lf_search_linkedin_profile_page"
 	PropSearchLinkedInProfilePageLegacy string = "search_linkedin_profile_page"
-	PropLinkedIn                        string = "lf_linkedin_profile_page"
-	PropLinkedInLegacy                  string = "linkedin_org"
+	PropLinkedInProfilePage             string = "lf_linkedin_profile_page"
+	PropLinkedInProfilePageLegacy       string = "linkedin_org"
+
+	PropSearchLinkedInCompanyPage string = "lf_search_linkedin_company_page"
+	PropLinkedInCompanyPage       string = "lf_linkedin_company_page"
 
 	PropValidatePostcode string = "lf_validate_postcode"
 	PropPostcodeValidity string = "lf_postcode_validity"
@@ -116,6 +119,32 @@ func ValidatePostcodeEncrypt(portalId string, objectType string, objectId string
 	values["city"] = city
 	values["country"] = country
 	values["cbs_info"] = fmt.Sprintf("%v", cbsInfo)
+	values["target_field"] = targetField
+	values["ts"] = fmt.Sprintf("%v", time.Now().UnixMilli())
+
+	b, err := json.Marshal(values)
+	if err != nil {
+		return "", errortools.ErrorMessage(err)
+	}
+
+	encrypted, err := utilities.Encrypt(b, cipherKey)
+	if err != nil {
+		return "", errortools.ErrorMessage(err)
+	}
+
+	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
+}
+
+func SearchLinkedInCompanyPageEncrypt(portalId string, objectType string, objectId string, name string, city string, domain string, pageUrl string, pageTitle string, targetField string, cipherKey string) (string, *errortools.Error) {
+	var values = make(map[string]string)
+	values["portal_id"] = portalId
+	values["object_type"] = objectType
+	values["object_id"] = objectId
+	values["name"] = name
+	values["city"] = city
+	values["domain"] = domain
+	values["page_url"] = pageUrl
+	values["page_title"] = pageTitle
 	values["target_field"] = targetField
 	values["ts"] = fmt.Sprintf("%v", time.Now().UnixMilli())
 
