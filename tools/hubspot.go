@@ -71,8 +71,9 @@ const (
 	PropCbsAfstandSchool              string = "cbs_afstand_school"
 )
 
-func ValidatePhoneEncrypt(portalId string, objectType string, objectId string, phoneNumber string, region string, field string, targetField string, cipherKey string) (string, *errortools.Error) {
+func ValidatePhoneEncrypt(appId string, portalId string, objectType string, objectId string, phoneNumber string, region string, field string, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
+	values["app_id"] = appId
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
 	values["object_id"] = objectId
@@ -95,8 +96,9 @@ func ValidatePhoneEncrypt(portalId string, objectType string, objectId string, p
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
-func ValidateEmailEncrypt(portalId string, objectType string, objectId string, email string, targetField string, cipherKey string) (string, *errortools.Error) {
+func ValidateEmailEncrypt(appId string, portalId string, objectType string, objectId string, email string, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
+	values["app_id"] = appId
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
 	values["object_id"] = objectId
@@ -117,8 +119,9 @@ func ValidateEmailEncrypt(portalId string, objectType string, objectId string, e
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
-func ValidatePostcodeEncrypt(portalId string, objectType string, objectId string, street string, postcode string, city string, country string, cbsInfo bool, targetField string, cipherKey string) (string, *errortools.Error) {
+func ValidatePostcodeEncrypt(appId string, portalId string, objectType string, objectId string, street string, postcode string, city string, country string, cbsInfo bool, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
+	values["app_id"] = appId
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
 	values["object_id"] = objectId
@@ -143,8 +146,9 @@ func ValidatePostcodeEncrypt(portalId string, objectType string, objectId string
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
-func SearchLinkedInCompanyPageEncrypt(portalId string, objectType string, objectId string, name string, city string, domain string, pageUrl string, pageTitle string, targetField string, cipherKey string) (string, *errortools.Error) {
+func SearchLinkedInCompanyPageEncrypt(appId string, portalId string, objectType string, objectId string, name string, city string, domain string, pageUrl string, pageTitle string, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
+	values["app_id"] = appId
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
 	values["object_id"] = objectId
@@ -169,8 +173,9 @@ func SearchLinkedInCompanyPageEncrypt(portalId string, objectType string, object
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
-func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, objectId string, firstName string, lastName string, companyName string, profileUrl string, profileTitle string, targetField string, cipherKey string) (string, *errortools.Error) {
+func SearchLinkedInProfilePageEncrypt(appId string, portalId string, objectType string, objectId string, firstName string, lastName string, companyName string, profileUrl string, profileTitle string, targetField string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
+	values["app_id"] = appId
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
 	values["object_id"] = objectId
@@ -195,8 +200,9 @@ func SearchLinkedInProfilePageEncrypt(portalId string, objectType string, object
 	return base64.StdEncoding.EncodeToString([]byte(encrypted)), nil
 }
 
-func GetKvkInfoEncrypt(portalId string, objectType string, objectId string, kvkNumber *string, name *string, zip *string, address *string, country *string, cipherKey string) (string, *errortools.Error) {
+func GetKvkInfoEncrypt(appId string, portalId string, objectType string, objectId string, kvkNumber *string, name *string, zip *string, address *string, country *string, cipherKey string) (string, *errortools.Error) {
 	var values = make(map[string]string)
+	values["app_id"] = appId
 	values["portal_id"] = portalId
 	values["object_type"] = objectType
 	values["object_id"] = objectId
